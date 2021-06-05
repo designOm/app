@@ -7,13 +7,16 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import DynamicListComponent from "./component/DynamicListComponent";
 import "./app.scss";
+import { LightDarkThemeContext } from "./context/LightDarkThemeContext";
 
 function App() {
   const [queryPrams, setQueryParams] = useState({});
   const [openModal, setOpenModal] = useState(false);
+  
+  const { isDarkTheme, setDarkTheme } = useContext(LightDarkThemeContext);
 
   const retrievePramsList = async () => {
     try {
