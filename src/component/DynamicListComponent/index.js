@@ -1,5 +1,12 @@
-import { List, ListItem, ListItemText, Paper, Typography } from "@material-ui/core";
-import { useState } from "react";
+import {
+  List,
+  ListItem,
+  ListItemText,
+  Paper,
+  Typography,
+} from "@material-ui/core";
+import {useState} from "react";
+import './index.scss';
 
 const DynamicListComponent = (props) => {
   const {params} = props;
@@ -24,16 +31,19 @@ const DynamicListComponent = (props) => {
   }, []);
 
   return (
-    <Paper className="listBox" >
-      <Typography variant="h2">{params}</Typography>
-      <List>
+    <div className="listBox">
+      <Typography variant="h2" className="listBox__heading">{params}</Typography>
+      <ul className="listBox__list">
         {listItem.map((item, index) => {
-          return <ListItem key={index}>
-              <ListItemText>{item}</ListItemText>
-          </ListItem>;
+          return (
+            <li key={index} className="listBox__listItem">
+              {/* <span>{item}</span> */}
+              <Typography component="span" variant="body2">{item}</Typography>
+            </li>
+          );
         })}
-      </List>
-    </Paper>
+      </ul>
+    </div>
   );
 };
 

@@ -1,6 +1,15 @@
-import {Button, Dialog, Typography} from "@material-ui/core";
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Paper,
+  TextField,
+  Typography,
+} from "@material-ui/core";
 import {useState} from "react";
 import DynamicListComponent from "./component/DynamicListComponent";
+import "./app.scss";
 
 function App() {
   const [queryPrams, setQueryParams] = useState({});
@@ -36,9 +45,11 @@ function App() {
     });
   }, [window.location.hash]);
 
+  const handleFormSubmit = () => {};
+
   return (
-    <div className="app">
-      <Typography variant="h1">list Retrieved From URL Query Params</Typography>
+    <div className="app" data-colorScheme={isDarkTheme ? 'dark':'light'}>
+      <Typography variant="h1">List Retrieved From URL Query Params</Typography>
       {Object.keys(queryPrams).length < 1 ? (
         <a href="/#tags=red,blue,purple">
           If List is not shown Click Here to change Url
@@ -47,14 +58,7 @@ function App() {
       {Object.keys(queryPrams).map((params, index) => {
         return <DynamicListComponent params={params} key={index} />;
       })}
-      <Button onClick={() => setOpenModal(true)}>Add New List Item</Button>
-      <Dialog
-        aria-describedby="Modal Dialog for adding Parameters"
-        aria-labelledby="form-dialog-title"
-        open={openModal}
-        onClose={() => setOpenModal(false)}>
-        <p>Hello</p>
-      </Dialog>
+     
     </div>
   );
 }

@@ -1,0 +1,48 @@
+@import '../../scss/color';
+
+.listBox{
+    width: 400px;
+    height: auto;
+    border: 1px solid $borderColor;
+    border-radius: 5px;
+    // padding: 15px;
+    padding-top: 0;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    &__heading{
+        border-bottom:1px solid $borderColor;
+        padding: 10px;
+        // margin: 0 -15px;
+        text-transform: uppercase;
+        border-radius: 5px 5px 0 0;
+        border: 1px solid $primary;
+        background-color: $primary;
+        color: $textColorLight;
+    }
+    &__list{
+        list-style: none;
+        padding-inline-start: 0;
+    }
+    &__listItem{
+        padding-left: 30px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid $borderColor;
+        text-transform: capitalize;
+        position: relative;
+        &:last-child{
+            border-bottom: none;
+        }
+        &::before{
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: $secondary;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 10px;
+        }
+    }
+}
